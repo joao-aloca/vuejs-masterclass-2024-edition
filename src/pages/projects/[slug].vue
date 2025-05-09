@@ -1,10 +1,16 @@
 <script setup lang="ts">
+import { usePageStore } from '@/stores/page'
 import { projectQuery } from '@/utils/supaQueries'
 import type { Project } from '@/utils/supaQueries'
 
 const route = useRoute('/projects/[slug]')
 
 const project = ref<Project | null>(null)
+
+
+watch(() => project.value?.name, () => {
+  usePageStore().pageData.title = `Project: ${project.value?.name || ''}`
+})
 
 const getProject = async () => {
   const { data, error } = await projectQuery(route.params.slug)
@@ -15,6 +21,7 @@ const getProject = async () => {
 }
 
 await getProject()
+
 </script>
 
 <template>
