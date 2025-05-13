@@ -34,7 +34,7 @@ await getTask()
     </TableRow>
     <TableRow>
       <TableHead> Assignee </TableHead>
-      <TableCell>{{ task.projects?.name }}</TableCell>
+      <TableCell> Lorem Ipsum </TableCell>
     </TableRow>
     <TableRow>
       <TableHead> Project </TableHead>
