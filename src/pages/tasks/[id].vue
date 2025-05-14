@@ -1,20 +1,23 @@
 <script setup lang="ts">
-import { usePageStore } from '@/stores/page';
-import { taskQuery } from '@/utils/supaQueries';
-import type { Task } from '@/utils/supaQueries'
+import { useErrorStore } from '@/stores/error'
+import { usePageStore } from '@/stores/page'
+import { taskQuery, type Task } from '@/utils/supaQueries'
 
-const route = useRoute("/tasks/[id]")
+const route = useRoute('/tasks/[id]')
 
 const task = ref<Task | null>(null)
 
-watch(() => task.value?.name, () => {
-  usePageStore().pageData.title = `Task: ${task.value?.name || ''}`
-})
+watch(
+  () => task.value?.name,
+  () => {
+    usePageStore().pageData.title = `Task: ${task.value?.name || ''}`
+  }
+)
 
 const getTask = async () => {
-  const { data, error } = await taskQuery(route.params.id)
+  const { data, error, status } = await taskQuery(route.params.id)
 
-  if (error) console.log(error)
+  if (error) useErrorStore().setError({ error, customCode: status })
 
   task.value = data
 }
@@ -30,15 +33,17 @@ await getTask()
     </TableRow>
     <TableRow>
       <TableHead> Description </TableHead>
-      <TableCell>{{ task.description }} </TableCell>
+      <TableCell>
+        {{ task.description }}
+      </TableCell>
     </TableRow>
     <TableRow>
       <TableHead> Assignee </TableHead>
-      <TableCell> Lorem Ipsum </TableCell>
+      <TableCell>Lorem ipsum</TableCell>
     </TableRow>
     <TableRow>
       <TableHead> Project </TableHead>
-      <TableCell>{{ task.projects?.name }} </TableCell>
+      <TableCell>{{ task.projects?.name }}</TableCell>
     </TableRow>
     <TableRow>
       <TableHead> Status </TableHead>

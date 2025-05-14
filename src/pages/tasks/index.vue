@@ -1,24 +1,22 @@
-<script setup lang='ts'>
-import { usePageStore } from '@/stores/page';
-import { tasksWithProjectsQuery } from '@/utils/supaQueries';
-import { columns } from '@/utils/tableColumns/tasksColumns';
-import { useErrorStore } from '@/stores/error';
-import type { TasksWithProjects } from '@/utils/supaQueries';
+<script setup lang="ts">
+import { tasksWithProjectsQuery } from '@/utils/supaQueries'
+import { columns } from '@/utils/tableColumns/tasksColumns'
+import type { TasksWithProjects } from '@/utils/supaQueries'
+import { usePageStore } from '@/stores/page'
+import { useErrorStore } from '@/stores/error'
 
 usePageStore().pageData.title = 'My Tasks'
 
-const tasks = ref<TasksWithProjects | null>(null);
+const tasks = ref<TasksWithProjects | null>(null)
 const getTasks = async () => {
-  const { data, error, status } = await tasksWithProjectsQuery;
+  const { data, error, status } = await tasksWithProjectsQuery
 
   if (error) useErrorStore().setError({ error, customCode: status })
 
-  tasks.value = data;
+  tasks.value = data
 }
 
 await getTasks()
-
-hello
 </script>
 
 <template>
