@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS projects;
 
 DROP TYPE IF EXISTS current_status;
 
-CREATE TYPE current_status as enum('em-progresso', 'finalizado');
+CREATE TYPE current_status as enum('in-progress', 'completed');
 
 CREATE TABLE projects (
   id bigint primary key generated always as identity not null,
@@ -10,6 +10,6 @@ CREATE TABLE projects (
   name text not null,
   slug text unique not null,
   description text,
-  status current_status default 'em-progresso' not null,
+  status current_status default 'in-progress' not null,
   collaborators text array default array[]::varchar[] not null
 );
