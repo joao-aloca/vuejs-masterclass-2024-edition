@@ -2,12 +2,15 @@
 import { useErrorStore } from './stores/error'
 
 const errorStore = useErrorStore()
+const authStore = useAuthStore()
 
 onErrorCaptured((error) => {
   errorStore.setError({ error })
 })
 
-onMounted(() => {})
+onMounted(() => {
+  authStore.trackAuthChanges()
+})
 </script>
 
 <template>
