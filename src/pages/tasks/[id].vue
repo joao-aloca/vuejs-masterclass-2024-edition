@@ -11,7 +11,7 @@ watch(
   () => task.value?.name,
   () => {
     usePageStore().pageData.title = `Task: ${task.value?.name || ''}`
-  }
+  },
 )
 
 const getTask = async () => {
@@ -53,8 +53,11 @@ await getTask()
       <TableHead> Collaborators </TableHead>
       <TableCell>
         <div class="flex">
-          <Avatar class="-mr-4 border border-primary hover:scale-110 transition-transform"
-            v-for="collab in task.collaborators" :key="collab">
+          <Avatar
+            class="-mr-4 border border-primary hover:scale-110 transition-transform"
+            v-for="collab in task.collaborators"
+            :key="collab"
+          >
             <RouterLink class="w-full h-full flex items-center justify-center" to="">
               <AvatarImage src="" alt="" />
               <AvatarFallback> </AvatarFallback>
@@ -70,8 +73,10 @@ await getTask()
         Comments cards goes in here..
 
         <div class="flex flex-col justify-between p-3 bg-muted my-2 rounded-md">
-          <textarea placeholder="Add your comment.."
-            class="w-full max-w-full overflow-y-auto prose-sm prose border rounded dark:prose-invert hover:border-muted bg-background border-muted p-3">
+          <textarea
+            placeholder="Add your comment.."
+            class="w-full max-w-full overflow-y-auto prose-sm prose border rounded dark:prose-invert hover:border-muted bg-background border-muted p-3"
+          >
           </textarea>
           <div class="flex justify-between mt-3">
             <Button> Comment </Button>
