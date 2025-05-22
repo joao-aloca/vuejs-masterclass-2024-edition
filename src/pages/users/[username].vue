@@ -3,7 +3,6 @@ import { profileQuery } from '@/utils/supaQueries'
 import type { Tables } from 'database/types'
 
 const { username } = useRoute('/users/[username]').params
-console.log(username)
 
 const profile = ref<Tables<'profiles'> | null>(null)
 const getProfiles = async () => {

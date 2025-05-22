@@ -1,26 +1,20 @@
 <script setup lang="ts">
 import { usePageStore } from '@/stores/page'
-import { projectQuery } from '@/utils/supaQueries'
-import type { Project } from '@/utils/supaQueries'
 
-const route = useRoute('/projects/[slug]')
+const { slug } = useRoute('/projects/[slug]').params
 
-const project = ref<Project | null>(null)
+const projectsLoader = useProjectsStore()
+const { project } = storeToRefs(projectsLoader)
+const { getProject } = projectsLoader
 
-watch(() => project.value?.name, () => {
-  usePageStore().pageData.title = `Project: ${project.value?.name || ''}`
-})
+watch(
+  () => project.value?.name,
+  () => {
+    usePageStore().pageData.title = `Project: ${project.value?.name || ''}`
+  },
+)
 
-const getProject = async () => {
-  const { data, error } = await projectQuery(route.params.slug)
-
-  if (error) console.log(error)
-
-  project.value = data
-}
-
-await getProject()
-
+await getProject(slug)
 </script>
 
 <template>
@@ -41,8 +35,11 @@ await getProject()
       <TableHead> Collaborators </TableHead>
       <TableCell>
         <div class="flex">
-          <Avatar class="-mr-4 border border-primary hover:scale-110 transition-transform"
-            v-for="collab in project.collaborators" :key="collab">
+          <Avatar
+            class="-mr-4 border border-primary hover:scale-110 transition-transform"
+            v-for="collab in project.collaborators"
+            :key="collab"
+          >
             <RouterLink class="w-full h-full flex items-center justify-center" to="">
               <AvatarImage src="" alt="" />
               <AvatarFallback> </AvatarFallback>
