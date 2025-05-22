@@ -3,7 +3,13 @@ const status = defineModel<'in-progress' | 'completed'>()
 const isCompleted = ref<boolean>(status.value === 'completed')
 const emit = defineEmits(['commit'])
 
+const { readonly = false } = defineProps<{
+  readonly?: boolean
+}>()
+
 const toggleValue = () => {
+  if (readonly) return
+
   status.value = isCompleted.value ? 'in-progress' : 'completed'
   isCompleted.value = !isCompleted.value
   emit('commit')
