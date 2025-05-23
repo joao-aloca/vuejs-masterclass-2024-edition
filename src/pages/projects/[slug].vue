@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import AppInPlaceEditText from '@/components/AppInPlaceEdit/AppInPlaceEditText.vue'
+import AppInPlaceEditTextarea from '@/components/AppInPlaceEdit/AppInPlaceEditTextarea.vue'
 import { usePageStore } from '@/stores/page'
 
 const { slug } = useRoute('/projects/[slug]').params
@@ -34,7 +35,7 @@ const collabs = await getProfilesByIds(
     <TableRow>
       <TableHead> Description </TableHead>
       <TableCell
-        ><AppInPlaceEditText v-model="project.description" @commit="updateProject" />
+        ><AppInPlaceEditTextarea v-model="project.description" @commit="updateProject" />
       </TableCell>
     </TableRow>
     <TableRow>

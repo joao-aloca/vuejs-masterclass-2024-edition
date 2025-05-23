@@ -1,12 +1,12 @@
 import { RouterLink } from 'vue-router'
-import type { ColumnDef } from '@tanstack/vue-table'
-import type { Projects } from '../supaQueries'
-import type { Ref } from 'vue'
-import type { GroupedCollabs } from '@/types/GroupedCollabs'
 import Avatar from '@/components/ui/avatar/Avatar.vue'
 import AvatarImage from '@/components/ui/avatar/AvatarImage.vue'
 import AvatarFallback from '@/components/ui/avatar/AvatarFallback.vue'
 import AppInPlaceEditStatus from '@/components/AppInPlaceEdit/AppInPlaceEditStatus.vue'
+import type { ColumnDef } from '@tanstack/vue-table'
+import type { Projects } from '../supaQueries'
+import type { Ref } from 'vue'
+import type { GroupedCollabs } from '@/types/GroupedCollabs'
 
 export const columns = (collabs: Ref<GroupedCollabs>): ColumnDef<Projects[0]>[] => [
   {
