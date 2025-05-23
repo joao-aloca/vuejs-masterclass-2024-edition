@@ -12,6 +12,8 @@ const formData = ref({
 
 const router = useRouter()
 
+usePageStore().pageData.title = ''
+
 const signup = async () => {
   const isRegistered = await register(formData.value)
 
@@ -20,7 +22,9 @@ const signup = async () => {
 </script>
 
 <template>
-  <div class="mx-auto w-full flex justify-center items-center p-10 text-center -mt-10 min-h-[90vh] h-full">
+  <div
+    class="mx-auto w-full flex justify-center items-center p-10 text-center -mt-10 min-h-[90vh] h-full"
+  >
     <Card class="max-w-sm w-full mx-auto h-full">
       <CardHeader>
         <CardTitle class="text-2xl"> Register </CardTitle>
@@ -34,33 +38,69 @@ const signup = async () => {
         <form class="grid gap-4" @submit.prevent="signup">
           <div class="grid gap-2">
             <Label id="username" class="text-left">Username</Label>
-            <Input id="username" type="text" placeholder="johndoe19" v-model="formData.username" required />
+            <Input
+              id="username"
+              type="text"
+              placeholder="johndoe19"
+              v-model="formData.username"
+              required
+            />
           </div>
           <div class="flex flex-col sm:flex-row justify-between gap-4">
             <div class="grid gap-2">
               <Label id="first_name" class="text-left">First Name</Label>
-              <Input id="first_name" type="text" placeholder="John" v-model="formData.firstName" required />
+              <Input
+                id="first_name"
+                type="text"
+                placeholder="John"
+                v-model="formData.firstName"
+                required
+              />
             </div>
             <div class="grid gap-2">
               <Label id="last_name" class="text-left">Last Name</Label>
-              <Input id="last_name" type="text" placeholder="Doe" v-model="formData.lastName" required />
+              <Input
+                id="last_name"
+                type="text"
+                placeholder="Doe"
+                v-model="formData.lastName"
+                required
+              />
             </div>
           </div>
           <div class="grid gap-2">
             <Label id="email" class="text-left">Email</Label>
-            <Input id="email" type="email" placeholder="johndoe19@example.com" v-model="formData.email" required />
+            <Input
+              id="email"
+              type="email"
+              placeholder="johndoe19@example.com"
+              v-model="formData.email"
+              required
+            />
           </div>
 
           <div class="grid gap-2">
             <Label id="password" class="text-left">Password</Label>
-            <Input id="password" type="password" placeholder="*****" autocomplete v-model="formData.password"
-              required />
+            <Input
+              id="password"
+              type="password"
+              placeholder="*****"
+              autocomplete
+              v-model="formData.password"
+              required
+            />
           </div>
 
           <div class="grid gap-2">
             <Label id="confirm_password" class="text-left">Confirm Password</Label>
-            <Input id="confirm_password" type="password" placeholder="*****" autocomplete
-              v-model="formData.confirmPassword" required />
+            <Input
+              id="confirm_password"
+              type="password"
+              placeholder="*****"
+              autocomplete
+              v-model="formData.confirmPassword"
+              required
+            />
           </div>
           <Button type="submit" class="w-full"> Register </Button>
           <!-- <Button variant="outline" class="w-full"> Login with Google </Button> -->

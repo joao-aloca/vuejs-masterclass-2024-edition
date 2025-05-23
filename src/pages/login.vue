@@ -12,6 +12,8 @@ const { serverError, handleServerError, handleLoginForm, realtimeErrors } = useF
 
 const router = useRouter()
 
+usePageStore().pageData.title = ''
+
 watchDebounced(
   formData,
   () => {
