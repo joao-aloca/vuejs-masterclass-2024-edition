@@ -36,6 +36,11 @@ export const createNewTaskQuery = (newTask: CreateNewTask) => {
   return supabase.from('tasks').insert(newTask)
 }
 
+//  D E L E T E
+export const deleteTaskQuery = (id: number) => {
+  return supabase.from('tasks').delete().eq('id', id)
+}
+
 // T Y P E S
 export type Projects = QueryData<typeof projectsQuery>
 export type Project = QueryData<ReturnType<typeof projectQuery>>
