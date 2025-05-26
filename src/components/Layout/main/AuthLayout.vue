@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import AppNewTask from '@/components/AppNew/AppNewTask.vue'
 import { usePageStore } from '@/stores/page'
 
 const { pageData } = storeToRefs(usePageStore())
@@ -9,7 +10,6 @@ const taskSheetOpen = ref<boolean>(false)
 <template>
   <Sidebar @taskClicked="taskSheetOpen = true" />
   <AppNewTask v-model="taskSheetOpen" />
-
   <div class="flex flex-col lg:ml-52 ml-16 transition-[margin]">
     <TopNavbar />
 
