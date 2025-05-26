@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import AppInPlaceEditText from '@/components/AppInPlaceEdit/AppInPlaceEditText.vue'
-import AppInPlaceEditTextarea from '@/components/AppInPlaceEdit/AppInPlaceEditTextarea.vue'
 import { usePageStore } from '@/stores/page'
 
 const { slug } = useRoute('/projects/[slug]').params
@@ -122,7 +120,7 @@ const collabs = await getProfilesByIds(
   </section>
 </template>
 
-<style>
+<style scoped>
 th {
   @apply w-[100px];
 }
