@@ -1,13 +1,19 @@
 <script setup lang="ts">
 import AppNewTask from '@/components/AppNew/AppNewTask.vue'
-import { useMenu } from '@/composables/menu'
 import { usePageStore } from '@/stores/page'
+import { menuKey } from '@/utils/injectionKeys'
 
 const { pageData } = storeToRefs(usePageStore())
 
 const taskSheetOpen = ref<boolean>(false)
 
-const { menuOpen } = useMenu()
+const menuOpen = ref<boolean>(false)
+const toggleMenu = () => (menuOpen.value = !menuOpen.value)
+
+provide(menuKey, {
+  menuOpen,
+  toggleMenu
+})
 
 </script>
 
