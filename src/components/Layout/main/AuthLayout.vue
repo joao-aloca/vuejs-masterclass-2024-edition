@@ -10,7 +10,8 @@ const taskSheetOpen = ref<boolean>(false)
 <template>
   <Sidebar @taskClicked="taskSheetOpen = true" />
   <AppNewTask v-model="taskSheetOpen" />
-  <div class="flex flex-col lg:ml-52 ml-16 transition-[margin]">
+
+  <div class="flex flex-col lg:ml-52 ml-24 transition-[margin]">
     <TopNavbar />
 
     <main class="flex flex-col flex-1 gap-4 p-4 lg:gap-6 lg:p-6">
