@@ -41,7 +41,6 @@ const router = useRouter()
 
 const executeAction = async (linkTitle: string) => {
   if (linkTitle === 'Sign out') {
-    console.log(linkTitle)
     const { logout } = await import('@/utils/supaAuth')
     const isLoggedOut = await logout()
 
