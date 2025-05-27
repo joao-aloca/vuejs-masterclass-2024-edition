@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useHead } from '@unhead/vue'
 import { useErrorStore } from './stores/error'
 
 const errorStore = useErrorStore()
@@ -16,6 +17,10 @@ const { user } = storeToRefs(useAuthStore())
 
 const AuthLayout = defineAsyncComponent(() => import('./components/Layout/main/AuthLayout.vue'))
 const GuestLayout = defineAsyncComponent(() => import('./components/Layout/main/GuestLayout.vue'))
+
+const head = useHead()
+
+head.patch({ title: 'Pulse' })
 </script>
 
 <template>

@@ -23,6 +23,7 @@
     "@formkit/vue": "^1.6.9",
     "@supabase/supabase-js": "^2.43.4",
     "@tanstack/vue-table": "^8.21.3",
+    "@unhead/vue": "^2.0.10",
     "@vueuse/core": "^13.2.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

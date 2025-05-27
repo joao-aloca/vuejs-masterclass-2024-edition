@@ -15,6 +15,9 @@ const { getGroupedCollabs, groupedCollabs } = useCollabs()
 getGroupedCollabs(projects.value ?? [])
 
 const columnsWithCollabs = columns(groupedCollabs)
+
+const head = useHead()
+head.patch({ title: 'Projetos' })
 </script>
 
 <template>

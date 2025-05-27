@@ -11,6 +11,8 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 
+import { unheadVueComposablesImports } from '@unhead/vue'
+
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
@@ -29,6 +31,7 @@ export default defineConfig({
       imports: [
         'vue',
         VueRouterAutoImports,
+        unheadVueComposablesImports,
         {
           pinia: ['defineStore', 'storeToRefs', 'acceptHMRUpdate'],
         },
