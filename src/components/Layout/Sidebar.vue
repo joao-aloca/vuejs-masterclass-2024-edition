@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useWindowSize } from '@vueuse/core'
+import { useMenu } from '@/composables/menu'
+
 const links = [
   {
     title: 'Dashboard',
@@ -47,12 +50,24 @@ const executeAction = async (linkTitle: string) => {
 }
 
 defineEmits(['taskClicked'])
+
+const { menuOpen, toggleMenu } = useMenu()
+const WindowWidth = useWindowSize().width
+
+watchEffect(() => {
+  if (WindowWidth.value > 1024) {
+    menuOpen.value = true
+  } else {
+    menuOpen.value = false
+  }
+})
 </script>
 
 <template>
-  <aside class="flex flex-col h-screen gap-2 border-r fixed bg-muted/40 lg:w-52 w-24 transition-[width]">
+  <aside class="flex flex-col h-screen gap-2 border-r fixed bg-muted/40 transition-[width]"
+    :class="{ 'w-52': menuOpen, 'w-24': !menuOpen }">
     <div class="flex h-16 items-center border-b px-2 lg:px-4 shrink-0 gap-1 justify-between">
-      <Button variant="outline" size="icon" class="w-8 h-8">
+      <Button @click="toggleMenu" variant="outline" size="icon" class="w-8 h-8">
         <iconify-icon icon="lucide:menu"></iconify-icon>
       </Button>
 
